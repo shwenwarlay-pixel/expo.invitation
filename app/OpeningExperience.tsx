@@ -49,8 +49,8 @@ export function OpeningExperience() {
           <div className="envelope-back" />
           <div className="opening-card">
             <img src="/images/shwe-nwar-lay-logo-transparent.png" alt="" />
-            <span>Myanmar Business Trade Show</span>
-            <strong>&amp; Travel Expo 2026</strong>
+            <span>You’re invited</span>
+            <strong>from Shwe Nwar Lay</strong>
           </div>
           <div className="envelope-flap" />
           <div className="envelope-pocket" />
