@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+:root { --ivory:#f7f2e9; --paper:#fcf9f3; --green:#0e4d46; --deep:#073c38; --gold:#b18a3f; --ink:#173d38; --mist:#e4eee8; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--ivory); color:var(--ink); font-family:"Manrope", Arial, sans-serif; }
+img { display:block; max-width:100%; }
+main { overflow:hidden; }
+.section { min-height:100svh; position:relative; }
+.opening-shell { position:fixed; inset:0; z-index:100; min-height:100svh; overflow:hidden; background:var(--ivory); color:var(--deep); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:28px 24px 34px; isolation:isolate; }
+.opening-grain { position:absolute; inset:0; opacity:.13; background-image:radial-gradient(rgba(14,77,70,.52) .55px,transparent .7px); background-size:7px 7px; z-index:-1; }
+.opening-shell::before,.opening-shell::after { content:""; position:absolute; width:68vw; max-width:520px; aspect-ratio:1; border:1px solid rgba(177,138,63,.18); border-radius:50%; z-index:-1; }
+.opening-shell::before { left:-38vw; top:-24vw; } .opening-shell::after { right:-42vw; bottom:-29vw; }
+.envelope-scene { width:min(78vw,330px); height:230px; display:grid; place-items:center; perspective:1200px; opacity:0; transform:translateY(-55vh); animation:envelope-drop 1.05s .08s cubic-bezier(.2,.78,.25,1) forwards; }
+.envelope { position:relative; width:100%; height:190px; transform-style:preserve-3d; filter:drop-shadow(0 21px 22px rgba(7,60,56,.18)); animation:envelope-float 4.8s 1.25s ease-in-out infinite; }
+.envelope-back { position:absolute; inset:0; border-radius:5px; background:#0c5149; box-shadow:inset 0 0 0 1px rgba(255,255,255,.08); }
+.envelope-back::before,.envelope-back::after { content:""; position:absolute; bottom:0; width:54%; height:100%; background:#0b4842; }
+.envelope-back::before { left:0; clip-path:polygon(0 0,100% 52%,0 100%); }.envelope-back::after { right:0; clip-path:polygon(100% 0,0 52%,100% 100%); }
+.envelope-flap { position:absolute; z-index:5; inset:0 0 auto; height:57%; background:#0e5a51; clip-path:polygon(0 0,100% 0,50% 100%); transform-origin:50% 0; backface-visibility:hidden; transition:transform .72s cubic-bezier(.22,.72,.28,1); }
+.envelope-pocket { position:absolute; z-index:4; inset:44% 0 0; border-radius:0 0 5px 5px; background:#0e5149; clip-path:polygon(0 20%,50% 58%,100% 20%,100% 100%,0 100%); }
+.envelope-seal { position:absolute; z-index:7; left:50%; top:54%; width:46px; height:46px; border-radius:50%; transform:translate(-50%,-50%); overflow:hidden; border:1px solid rgba(255,255,255,.5); box-shadow:0 5px 12px rgba(0,0,0,.14); transition:opacity .28s ease; }
+.envelope-seal img { width:100%; height:100%; object-fit:cover; }
+.opening-card { position:absolute; z-index:3; left:50%; top:42%; width:84%; min-height:172px; transform:translate(-50%,20px) scale(.82); opacity:0; background:var(--paper); border:1px solid rgba(177,138,63,.48); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:22px; box-shadow:0 18px 35px rgba(7,60,56,.16); }
+.opening-card::before { content:""; position:absolute; inset:8px; border:1px solid rgba(177,138,63,.23); }
+.opening-card img { position:relative; width:125px; margin-bottom:17px; }
+.opening-card span,.opening-card strong { position:relative; font-family:"Cormorant Garamond",Georgia,serif; color:var(--deep); line-height:1.02; }
+.opening-card span { font-size:15px; }.opening-card strong { font-size:18px; font-weight:600; }
+.opening-copy { text-align:center; opacity:0; transform:translateY(12px); animation:opening-copy-in .68s .98s ease-out forwards; }
+.opening-copy h1 { margin:12px 0 12px; font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(45px,12vw,62px); font-weight:500; line-height:.9; letter-spacing:-.045em; }
+.opening-copy p { margin:0; font-family:"Cormorant Garamond",Georgia,serif; font-size:20px; line-height:1.05; }
+.eyebrow { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.23em; line-height:1.5; margin:0; }
+.tap-open { margin-top:30px; padding:12px 20px; border:0; background:linear-gradient(90deg,#a17a30 0%,#e4c97d 44%,#a17a30 68%,#a17a30 100%); background-size:220% 100%; background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent; font:700 11px/1 "Manrope",sans-serif; letter-spacing:.19em; text-transform:uppercase; cursor:pointer; opacity:0; transform:translateY(8px); animation:tap-arrive .55s 1.28s ease-out forwards,tap-shimmer 2.8s 1.7s ease-in-out infinite; color:var(--gold); }
+.tap-open span { display:inline-block; padding-left:9px; color:var(--gold); -webkit-text-fill-color:var(--gold); animation:tap-arrow 2.1s 1.8s ease-in-out infinite; }
+.tap-open:focus-visible { outline:1px solid var(--gold); outline-offset:5px; border-radius:2px; }
+.tap-open:disabled { cursor:default; }
+.is-opening .tap-open { animation:tap-fade-out .24s ease forwards; }
+.is-opening .tap-open span { animation:none; }
+.is-opening .opening-copy { animation:copy-fade-out .4s .08s ease forwards; }
+.is-opening .envelope { animation:none; }
+.is-opening .envelope-flap { transform:rotateX(180deg); z-index:2; }
+.is-opening .envelope-seal { opacity:0; }
+.is-opening .opening-card { z-index:6; animation:card-rise-expand 1.62s .25s cubic-bezier(.2,.75,.24,1) forwards; }
+.is-opening .envelope-scene { animation:envelope-fade 1.45s .38s ease forwards; }
+.is-opening { animation:shell-reveal 1.9s ease forwards; }
+@keyframes envelope-drop { 0%{opacity:0;transform:translateY(-55vh)} 72%{opacity:1;transform:translateY(7px)} 88%{transform:translateY(-2px)} 100%{opacity:1;transform:translateY(0)} }
+@keyframes envelope-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+@keyframes opening-copy-in { to{opacity:1;transform:translateY(0)} }
+@keyframes tap-arrive { to{opacity:1;transform:translateY(0)} }
+@keyframes tap-shimmer { 0%,28%{background-position:120% 0;filter:drop-shadow(0 0 0 rgba(177,138,63,0))} 55%{background-position:-25% 0;filter:drop-shadow(0 0 5px rgba(177,138,63,.34))} 100%{background-position:-25% 0;filter:drop-shadow(0 0 0 rgba(177,138,63,0))} }
+@keyframes tap-arrow { 0%,100%{transform:translateY(0);opacity:.65} 50%{transform:translateY(3px);opacity:1} }
+@keyframes tap-fade-out { to{opacity:0;transform:translateY(5px)} }
+@keyframes copy-fade-out { to{opacity:0;transform:translateY(-7px)} }
+@keyframes card-rise-expand { 0%{opacity:0;transform:translate(-50%,20px) scale(.82)} 44%{opacity:1;transform:translate(-50%,-146px) scale(1)} 76%{opacity:1;transform:translate(-50%,-146px) scale(1)} 100%{opacity:0;transform:translate(-50%,-146px) scale(1.72)} }
+@keyframes envelope-fade { 0%,62%{opacity:1} 100%{opacity:0;transform:translateY(8px)} }
+@keyframes shell-reveal { 0%,82%{opacity:1} 100%{opacity:0} }
+.welcome { background:var(--paper); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:70px 24px; }
+.welcome::before { content:""; position:absolute; inset:15px; border:1px solid rgba(177,138,63,.3); pointer-events:none; }
+h2 { font-family:"Cormorant Garamond", Georgia, serif; font-size:clamp(47px,13vw,68px); font-weight:500; letter-spacing:-.055em; line-height:.88; margin:17px 0 0; }
+.welcome h2 { color:var(--green); } .gold-line { width:96px; height:16px; margin:28px 0 20px; display:grid; place-items:center; grid-template-columns:1fr 8px 1fr; gap:10px; } .gold-line::before, .gold-line::after { content:""; height:1px; background:var(--gold); width:34px; } .gold-line span { width:6px; height:6px; background:var(--gold); transform:rotate(45deg); }
+.event-name { max-width:250px; margin:0; font-size:12px; line-height:1.75; letter-spacing:.06em; text-transform:uppercase; }
+.details { background:var(--mist); padding:86px 28px; display:flex; flex-direction:column; justify-content:center; } .details h2 { margin:13px 0 52px; color:var(--deep); } h2 em { font-weight:400; color:var(--gold); }
+.detail-list { border-top:1px solid rgba(14,77,70,.35); } .detail-row { display:grid; grid-template-columns:42px 1fr; gap:10px; padding:23px 0; border-bottom:1px solid rgba(14,77,70,.35); } .detail-number { color:var(--gold); font-family:"Cormorant Garamond", Georgia, serif; font-size:22px; } .detail-row p { margin:0 0 6px; font-size:9px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; } .detail-row strong { font-family:"Cormorant Garamond", Georgia, serif; font-size:22px; font-weight:500; line-height:1.05; }
+.closing { min-height:100svh; background:var(--paper); text-align:center; padding:62px 24px 46px; display:flex; flex-direction:column; align-items:center; justify-content:center; } .closing-logo { width:min(68vw,260px); height:auto; object-fit:contain; margin-bottom:49px; } .closing .eyebrow { max-width:300px; color:var(--gold); line-height:1.8; } .closing h2 { margin:19px 0 29px; color:var(--green); font-size:clamp(46px,12vw,63px); } .closing-details { max-width:255px; display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:8px; font-size:10px; font-weight:600; line-height:1.6; letter-spacing:.06em; } .closing-details i { height:4px; width:4px; border-radius:50%; background:var(--gold); }.actions { display:grid; gap:10px; width:min(100%,310px); margin-top:44px; } .actions a,.actions button { min-height:48px; border:1px solid var(--green); background:var(--green); color:var(--paper); font:600 11px/1 "Manrope",sans-serif; letter-spacing:.11em; text-transform:uppercase; display:flex; align-items:center; justify-content:space-between; padding:0 18px; text-decoration:none; cursor:pointer; } .actions button { color:var(--green); background:transparent; } .actions span { color:var(--gold); font-size:15px; }
+@media (min-width:720px) { .details { padding-left:clamp(12vw,20vw,25vw); padding-right:clamp(12vw,20vw,25vw); }.closing { padding-left:80px; padding-right:80px; } }
+@media (prefers-reduced-motion:reduce) { html{scroll-behavior:auto}.envelope-scene,.opening-copy,.tap-open{animation:none;opacity:1;transform:none}.envelope{animation:none}.is-opening,.is-opening .envelope-scene,.is-opening .opening-copy,.is-opening .tap-open,.is-opening .opening-card{animation-duration:.2s;animation-delay:0s} }

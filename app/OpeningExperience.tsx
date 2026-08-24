@@ -1,0 +1,72 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
+export function OpeningExperience() {
+  const [opening, setOpening] = useState(false);
+  const [complete, setComplete] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+    };
+  }, []);
+
+  const openInvitation = () => {
+    if (opening) return;
+    setOpening(true);
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    timerRef.current = setTimeout(() => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      window.scrollTo({ top: 0, behavior: "auto" });
+      setComplete(true);
+    }, reducedMotion ? 260 : 1900);
+  };
+
+  if (complete) return null;
+
+  return (
+    <section
+      className={`opening-shell${opening ? " is-opening" : ""}`}
+      aria-labelledby="opening-title"
+      aria-live="polite"
+    >
+      <div className="opening-grain" aria-hidden="true" />
+
+      <div className="envelope-scene" aria-hidden="true">
+        <div className="envelope">
+          <div className="envelope-back" />
+          <div className="opening-card">
+            <img src="/images/shwe-nwar-lay-logo-transparent.png" alt="" />
+            <span>Myanmar Business Trade Show</span>
+            <strong>&amp; Travel Expo 2026</strong>
+          </div>
+          <div className="envelope-flap" />
+          <div className="envelope-pocket" />
+          <div className="envelope-seal"><img src="/images/snl-logo-badge-512.png" alt="" /></div>
+        </div>
+      </div>
+
+      <div className="opening-copy">
+        <h1 id="opening-title">YOU’RE INVITED</h1>
+        <p>Myanmar Business<br />Trade Show &amp; Travel Expo 2026</p>
+      </div>
+
+      <button className="tap-open" type="button" onClick={openInvitation} disabled={opening}>
+        Tap to Open
+        <span aria-hidden="true">↓</span>
+      </button>
+    </section>
+  );
+}
