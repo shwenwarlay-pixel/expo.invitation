@@ -7,9 +7,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Shwe Nwar Lay | Expo Invitation 2026",
     description: "Join us at Booth No. 13, Pan Pacific Yangon Hotel, 4–6 September 2026.",
-    images: [{ url: "/og.png", width: 1680, height: 945, alt: "Shwe Nwar Lay Expo Invitation 2026" }],
   },
-  twitter: { card: "summary_large_image", title: "Shwe Nwar Lay | Expo Invitation 2026", description: "Join us at Booth No. 13, Pan Pacific Yangon Hotel, 4–6 September 2026.", images: ["/og.png"] },
+  twitter: { card: "summary", title: "Shwe Nwar Lay | Expo Invitation 2026", description: "Join us at Booth No. 13, Pan Pacific Yangon Hotel, 4–6 September 2026." },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
