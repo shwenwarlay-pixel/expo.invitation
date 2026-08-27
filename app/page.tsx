@@ -13,6 +13,10 @@ export default function Home() {
       <OpeningExperience />
 
       <section className="welcome section" id="welcome" aria-labelledby="welcome-title">
+        <div className="welcome-host">
+          <img className="welcome-logo" src="/images/shwe-nwar-lay-logo-transparent.png" alt="Shwe Nwar Lay" />
+          <p>With compliments from Shwe Nwar Lay</p>
+        </div>
         <p className="eyebrow">Join us at</p>
         <h2 id="welcome-title">PAN PACIFIC<br />YANGON HOTEL</h2>
         <div className="gold-line" aria-hidden="true"><span /></div>

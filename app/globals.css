@@ -38,6 +38,9 @@ main { overflow:hidden; }
 @keyframes shell-reveal { 0%,82%{opacity:1} 100%{opacity:0} }
 .welcome { background:var(--paper); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:70px 24px; }
 .welcome::before { content:""; position:absolute; inset:15px; border:1px solid rgba(177,138,63,.3); pointer-events:none; }
+.welcome-host { display:flex; flex-direction:column; align-items:center; gap:9px; margin:0 0 29px; }
+.welcome-logo { width:min(44vw,176px); max-height:58px; object-fit:contain; }
+.welcome-host p { margin:0; color:var(--gold); font-size:9px; font-weight:700; letter-spacing:.16em; line-height:1.5; text-transform:uppercase; }
 h2 { font-family:"Cormorant Garamond", Georgia, serif; font-size:clamp(47px,13vw,68px); font-weight:500; letter-spacing:-.055em; line-height:.88; margin:17px 0 0; }
 .welcome h2 { color:var(--green); } .gold-line { width:96px; height:16px; margin:28px 0 20px; display:grid; place-items:center; grid-template-columns:1fr 8px 1fr; gap:10px; } .gold-line::before, .gold-line::after { content:""; height:1px; background:var(--gold); width:34px; } .gold-line span { width:6px; height:6px; background:var(--gold); transform:rotate(45deg); }
 .event-name { max-width:250px; margin:0; font-size:12px; line-height:1.75; letter-spacing:.06em; text-transform:uppercase; }
