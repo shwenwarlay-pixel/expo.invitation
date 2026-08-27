@@ -50,8 +50,13 @@ export function OpeningExperience() {
       <div className="envelope-scene">
         <div className="official-cover">
           <img
-            src="/images/official-expo-invitation-cover.png"
+            src="/images/official-expo-invitation-cover.webp"
             alt="Official Myanmar Business Trade Show and Travel Expo 2026 invitation for Dear Esteemed Guest"
+            width={960}
+            height={1440}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
           />
         </div>
       </div>
