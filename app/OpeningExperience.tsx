@@ -31,7 +31,7 @@ export function OpeningExperience() {
       document.documentElement.style.overflow = "";
       window.scrollTo({ top: 0, behavior: "auto" });
       setComplete(true);
-    }, reducedMotion ? 260 : 1900);
+    }, reducedMotion ? 260 : 1500);
   };
 
   if (complete) return null;
@@ -43,24 +43,17 @@ export function OpeningExperience() {
       aria-live="polite"
     >
       <div className="opening-grain" aria-hidden="true" />
+      <h1 id="opening-title" className="sr-only">
+        Official Myanmar Business Trade Show and Travel Expo 2026 invitation from Shwe Nwar Lay
+      </h1>
 
-      <div className="envelope-scene" aria-hidden="true">
-        <div className="envelope">
-          <div className="envelope-back" />
-          <div className="opening-card">
-            <img src="/images/shwe-nwar-lay-logo-transparent.png" alt="" />
-            <span>You’re invited</span>
-            <strong>from Shwe Nwar Lay</strong>
-          </div>
-          <div className="envelope-flap" />
-          <div className="envelope-pocket" />
-          <div className="envelope-seal"><img src="/images/snl-logo-badge-512.png" alt="" /></div>
+      <div className="envelope-scene">
+        <div className="official-cover">
+          <img
+            src="/images/official-expo-invitation-cover.png"
+            alt="Official Myanmar Business Trade Show and Travel Expo 2026 invitation for Dear Esteemed Guest"
+          />
         </div>
-      </div>
-
-      <div className="opening-copy">
-        <h1 id="opening-title">YOU’RE INVITED</h1>
-        <p>Myanmar Business<br />Trade Show &amp; Travel Expo 2026</p>
       </div>
 
       <button className="tap-open" type="button" onClick={openInvitation} disabled={opening}>
